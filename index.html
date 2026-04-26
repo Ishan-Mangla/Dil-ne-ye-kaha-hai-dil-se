@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>✨ Our Universe of Moods ✨ | For My Varsha</title>
+  <title>💞 Ishan & Varsha - Our Duo Universe 💞</title>
   <style>
     * {
       margin: 0;
@@ -21,7 +21,6 @@
       cursor: crosshair;
     }
 
-    /* cosmic animated background */
     #cosmic-bg {
       position: fixed;
       top: 0;
@@ -41,7 +40,6 @@
       pointer-events: none;
     }
 
-    /* glassmorphism card */
     .mood-card {
       position: relative;
       z-index: 20;
@@ -49,13 +47,76 @@
       background: rgba(12, 5, 25, 0.55);
       border-radius: 56px;
       width: 94%;
-      max-width: 580px;
+      max-width: 650px;
       margin: 1.5rem auto;
       padding: 1.8rem 1.6rem;
       text-align: center;
       border: 1.5px solid rgba(255, 120, 170, 0.7);
       box-shadow: 0 30px 45px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,90,140,0.2), 0 0 28px #ff3b7f80;
-      transition: 0.2s;
+    }
+
+    .mode-switch {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 20px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 80px;
+      padding: 6px;
+      backdrop-filter: blur(8px);
+    }
+    .mode-btn {
+      flex: 1;
+      padding: 12px 10px;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      text-align: center;
+      border: none;
+      background: rgba(30,15,45,0.6);
+      color: #ffccdd;
+    }
+    .mode-btn.ishan-active {
+      background: linear-gradient(95deg, #2c3e66, #1a2a4f);
+      box-shadow: 0 0 20px #4a7cff;
+      color: white;
+      border: 1px solid #88bbff;
+    }
+    .mode-btn.varsha-active {
+      background: linear-gradient(95deg, #b23c6a, #882c55);
+      box-shadow: 0 0 20px #ff77aa;
+      color: white;
+      border: 1px solid #ff99cc;
+    }
+
+    .duo-counters {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 15px 0 10px;
+    }
+    .counter-card {
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 48px;
+      padding: 10px 15px;
+      flex: 1;
+      text-align: center;
+      border: 1px solid #ff99cc;
+    }
+    .counter-card h3 {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .counter-card .count-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(95deg, #ff99cc, #ff6699);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .glow-title {
@@ -75,7 +136,6 @@
       100% { background-position: 200% 50%; }
     }
 
-    /* mood selector pills */
     .mood-selector {
       display: flex;
       flex-wrap: wrap;
@@ -107,7 +167,6 @@
       padding: 12px;
       margin: 16px 0;
       min-height: 70px;
-      font-size: 1rem;
       backdrop-filter: blur(4px);
     }
 
@@ -142,7 +201,7 @@
     .input-group {
       margin: 10px 0;
     }
-    input, textarea {
+    textarea {
       width: 100%;
       padding: 12px 16px;
       border-radius: 60px;
@@ -152,12 +211,8 @@
       font-size: 0.9rem;
       resize: none;
     }
-    textarea {
-      border-radius: 28px;
-      resize: vertical;
-    }
 
-    /* Floating name + cracker burst animation */
+    /* Animations */
     .floating-name {
       position: fixed;
       font-size: 2rem;
@@ -173,7 +228,6 @@
     }
     @keyframes floatName {
       0% { transform: translateY(0) scale(0.6); opacity: 1; }
-      70% { opacity: 0.8; }
       100% { transform: translateY(-180px) scale(1.3); opacity: 0; }
     }
 
@@ -204,7 +258,6 @@
       100% { transform: translate(var(--dx, 50px), -120px) rotate(20deg); opacity: 0; }
     }
 
-    /* Proposal modal + secret garden same as before but elegant */
     .proposal-modal, .secret-modal {
       position: fixed;
       top: 50%;
@@ -253,10 +306,28 @@
 <div id="particles-js"></div>
 
 <div class="mood-card">
-  <h1 class="glow-title">🌸 Varsha's Moodverse 🌸</h1>
+  <h1 class="glow-title">💑 Ishan ❤️ Varsha • Duo Hearts 💑</h1>
+  
+  <div class="mode-switch">
+    <button id="ishanModeBtn" class="mode-btn ishan-active">💙 ISHAN MODE 💙<br><small>I'm Ishan</small></button>
+    <button id="varshaModeBtn" class="mode-btn">🌸 VARSHA MODE 🌸<br><small>I'm Varsha</small></button>
+  </div>
+  
   <div class="timer-badge" id="liveTimer">💖 counting heartbeats...</div>
   
-  <!-- mood selector: angry, in love, ask me, secret -->
+  <div class="duo-counters">
+    <div class="counter-card">
+      <h3>💙 Ishan Missed Varsha</h3>
+      <div class="count-number" id="ishanMissCounter">0</div>
+      <small>times he thought of her</small>
+    </div>
+    <div class="counter-card">
+      <h3>💗 Varsha Missed Ishan</h3>
+      <div class="count-number" id="varshaMissCounter">0</div>
+      <small>times she felt his love</small>
+    </div>
+  </div>
+
   <div class="mood-selector">
     <div class="mood-pill" data-mood="angry">😤 Angry / Miss you</div>
     <div class="mood-pill" data-mood="love">💖 In Love / Romantic</div>
@@ -266,9 +337,7 @@
 
   <div class="message-area" id="moodMessageDisplay">✨ Choose your mood, my love ✨</div>
 
-  <div class="button-group" id="dynamicButtons">
-    <!-- buttons will be injected by mood -->
-  </div>
+  <div class="button-group" id="dynamicButtons"></div>
 
   <div class="input-group">
     <textarea rows="2" id="customMessageInput" placeholder="💬 Type your personal note, question or secret..."></textarea>
@@ -276,10 +345,9 @@
   </div>
 
   <button class="action-btn" onclick="toggleMusic()">🎵 Romantic BGM 🎵</button>
-  <footer>✨ double-tap anywhere → secret garden ✨ | floating crackers + 💖</footer>
+  <footer>✨ double-tap → secret garden ✨ | Mode = Who is using the website ✨</footer>
 </div>
 
-<!-- proposal modal -->
 <div id="proposalModal" class="proposal-modal hidden">
   <h2>💍 Will you be my eternity? 💍</h2>
   <p>Every heartbeat says YES 💗</p>
@@ -287,7 +355,6 @@
   <button id="runawayNo">😜 No (catch me)</button>
 </div>
 
-<!-- Secret garden -->
 <div id="secretGardenModal" class="secret-modal hidden">
   <h2>🔮 Only Your Eyes 🔮</h2>
   <p style="margin: 15px;">In every universe,<br>I find you. You are my home.</p>
@@ -300,57 +367,196 @@
 </audio>
 
 <script>
-  // ============= GLOBAL STATE ==============
-  let loveCounter = parseInt(localStorage.getItem("varshaLoveCount")) || 0;
-  let currentMood = "love"; // default
+  // ============================================================
+  // CORRECT DAY COUNT - Using your start date from GitHub project
+  // ============================================================
+  let ishanMissCount = parseInt(localStorage.getItem("ishanMissedTotal")) || 0;
+  let varshaMissCount = parseInt(localStorage.getItem("varshaMissedTotal")) || 0;
+  let currentUserMode = "ishan";
+  let currentMood = "love";
   let proposalShownFlag = false;
-  const romanceStart = new Date("2024-01-01");
-  let musicPlaying = false;
+  
+  // SET YOUR CORRECT START DATE HERE (YYYY, MM-1, DD)
+  // Example: If you started on April 8, 2026 -> new Date(2026, 3, 8)
+  const romanceStart = new Date(2026, 3, 8);  // April 8, 2026 (month index 3 = April)
+  
   const bgMusic = document.getElementById("bgRomance");
 
-  // Mood-based message sets & actions
+  // Telegram Bots Config
+  const ISHAN_BOT_TOKEN = "8787860636:AAGGr4F7AS7udoIp5nUBIoUi1oPkEje8Bog";
+  const ISHAN_CHAT_ID = "1175249222";
+  const VARSHAS_BOT_TOKEN = "HER_BOT_TOKEN_HERE";
+  const VARSHAS_CHAT_ID = "HER_CHAT_ID_HERE";
+
+  // ========== UPDATED ANGRY MESSAGES WITH YOUR SPECIAL PHRASES ==========
   const moodData = {
     angry: {
-      label: "😤 When you're angry / Missing me",
+      label: "😤 Kyaaa hai! Thappad khaoge! 😤",
       messages: [
-        { text: "😤 I'm mad but I miss you... come here", type: "angry_miss" },
-        { text: "💢 Don't make me thappad you but I love you", type: "angry_love" },
-        { text: "🤬 You're annoying but I'm yours only", type: "angry_yours" },
-        { text: "😠 Bhabhi ji gussa hai? 👉👈 I'm sorry, I love you", type: "angry_apology" }
+        { text: "😤 kyaaa hai", type: "angry_kya" },
+        { text: "👋 thappad khaoge", type: "angry_thappad" },
+        { text: "💥 muh tod dungi", type: "angry_muhtod" },
+        { text: "🏃 jakr to batao aap", type: "angry_batao" },
+        { text: "💧 I love drinking water", type: "angry_water" },
+        { text: "💊 meri vitamine ki goli", type: "angry_vitamin" },
+        { text: "🍼 baby mera baby", type: "angry_baby" },
+        { text: "😠 OK I'm mad but hug me after? 🥺", type: "angry_miss" },
+        { text: "💢 Naraaz hoon lekin pyaar hai tumse ❤️‍🔥", type: "angry_love" }
       ],
-      extraActions: ["😡 Sending virtual hug anyway", "💥 Miss you aggressively"]
+      extraActions: ["😡 Sending virtual angry-hug 🤗💢", "💥 Miss you aggressively with pyaar"]
     },
     love: {
-      label: "💖 In Love Mode",
+      label: "💖 Deewangi ka safar 💖",
       messages: [
-        { text: "💖 I love you more than the stars", type: "love_deep" },
-        { text: "💞 You are my heartbeat, Ishan", type: "love_heartbeat" },
-        { text: "💋 Sending a thousand kisses", type: "love_kiss" },
-        { text: "🤗 I wanna hug you forever", type: "love_hug" },
-        { text: "✨ You make my world magical", type: "love_magic" }
+        { text: "💖 I love you more than galaxies, forever ❤️", type: "love_deep" },
+        { text: "💞 Tum meri zindagi ki roshni ho ✨", type: "love_heartbeat" },
+        { text: "💋 A thousand kisses flying to you 🌬️💋", type: "love_kiss" },
+        { text: "🤗 I wanna hug you until forever 🤗", type: "love_hug" },
+        { text: "✨ Tumhare bina adhoora/adhoori hoon, come be my forever ✨", type: "love_magic" },
+        { text: "🌹 Tu mera sukoon, mera junoon ❤️‍🔥", type: "love_special" }
       ]
     },
     ask: {
-      label: "❓ Ask me anything (I will answer on my end!)",
+      label: "❓ Pucho mujhse kuch bhi...",
       messages: [
-        { text: "❓ What are you thinking right now?", type: "ask_thought" },
+        { text: "❓ Tum mere baare mein kya sochte ho? 💭", type: "ask_thought" },
         { text: "💭 Will you marry me one day? 😳", type: "ask_marry" },
-        { text: "⭐ What's the first thing you'd do if we meet?", type: "ask_meet" },
-        { text: "🌹 Send me a secret emoji that describes us", type: "ask_emoji" }
+        { text: "⭐ First date ka kya plan hai? Batao na 🌸", type: "ask_meet" },
+        { text: "🌹 Send me a secret emoji jo sirf hum samjhe 🤫", type: "ask_emoji" },
+        { text: "💌 Kya tum mujhe har roz yaad karte ho? 😘", type: "ask_daily" }
       ]
     },
     secret: {
-      label: "🤫 Secret Whisper Mode (only we understand)",
+      label: "🤫 Sirf Tum Suno 🤫",
       messages: [
-        { text: "🤫 I dreamt about you last night...", type: "secret_dream" },
-        { text: "💌 My hidden letter: You are my forever person", type: "secret_letter" },
-        { text: "🔐 Password to my heart is still your name", type: "secret_password" },
-        { text: "🌙 I'll wait for you in every timeline", type: "secret_timeline" }
+        { text: "🤫 I dreamt about our future last night... we were dancing 💃🕺", type: "secret_dream" },
+        { text: "💌 Hidden letter: Teri mohabbat mein pagal hoon 🥰", type: "secret_letter" },
+        { text: "🔐 Password to my heart is still 'Ishan' ❤️", type: "secret_password" },
+        { text: "🌙 Every timeline, I choose you. Hamesha 🌙", type: "secret_timeline" },
+        { text: "💗 Chupke se bol rahi/raha hun: You are my soulmate 💗", type: "secret_whisper" }
       ]
     }
   };
 
-  // update UI based on selected mood
+  // Helper Functions
+  async function sendTelegram(botToken, chatId, text) {
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: "HTML" })
+      });
+      return (await response.json()).ok;
+    } catch (err) { return false; }
+  }
+
+  async function sendToBothTelegrams(senderName, messageContent, moodType = "love") {
+    const timestamp = new Date().toLocaleString();
+    const fullMessage = `💞✨ ${senderName} sent a message ✨💞\n🎭 Mood: ${moodType}\n💌 "${messageContent}"\n⏰ ${timestamp}\n💖 Our Duo Love 💖`;
+    
+    if (ISHAN_BOT_TOKEN && ISHAN_CHAT_ID && ISHAN_CHAT_ID !== "YOUR_CHAT_ID_HERE") {
+      await sendTelegram(ISHAN_BOT_TOKEN, ISHAN_CHAT_ID, fullMessage);
+    }
+    if (VARSHAS_BOT_TOKEN !== "HER_BOT_TOKEN_HERE" && VARSHAS_CHAT_ID !== "HER_CHAT_ID_HERE") {
+      await sendTelegram(VARSHAS_BOT_TOKEN, VARSHAS_CHAT_ID, fullMessage);
+      showFloatingNotif("💞 Message delivered to both hearts! 💞");
+    } else {
+      showFloatingNotif("💖 Message sent to Ishan!");
+    }
+  }
+
+  function showFloatingNotif(msg) {
+    let div = document.createElement("div");
+    div.innerText = msg;
+    div.style.position = "fixed";
+    div.style.bottom = "100px";
+    div.style.left = "50%";
+    div.style.transform = "translateX(-50%)";
+    div.style.background = "linear-gradient(95deg, #ff3388, #ff6699)";
+    div.style.padding = "10px 22px";
+    div.style.borderRadius = "60px";
+    div.style.color = "white";
+    div.style.fontWeight = "bold";
+    div.style.zIndex = "1000";
+    div.style.fontSize = "14px";
+    div.style.boxShadow = "0 0 20px #ff3388";
+    document.body.appendChild(div);
+    setTimeout(() => div.remove(), 2800);
+  }
+
+  function showFlashMessage(msg) {
+    let flash = document.createElement("div");
+    flash.innerText = msg;
+    flash.style.position = "fixed";
+    flash.style.bottom = "30%";
+    flash.style.left = "50%";
+    flash.style.transform = "translateX(-50%)";
+    flash.style.background = "#ff3388cc";
+    flash.style.backdropFilter = "blur(12px)";
+    flash.style.padding = "10px 22px";
+    flash.style.borderRadius = "40px";
+    flash.style.fontWeight = "bold";
+    flash.style.zIndex = "300";
+    flash.style.color = "white";
+    flash.style.animation = "fadeMsg 1.8s forwards";
+    document.body.appendChild(flash);
+    setTimeout(() => flash.remove(), 1800);
+  }
+
+  function updateCountersUI() {
+    document.getElementById("ishanMissCounter").innerText = ishanMissCount;
+    document.getElementById("varshaMissCounter").innerText = varshaMissCount;
+    localStorage.setItem("ishanMissedTotal", ishanMissCount);
+    localStorage.setItem("varshaMissedTotal", varshaMissCount);
+  }
+
+  function incrementCounterBasedOnMode() {
+    if (currentUserMode === "ishan") {
+      ishanMissCount++;
+      updateCountersUI();
+      showFlashMessage(`💙 Ishan missed Varsha (${ishanMissCount} times) 💙`);
+    } else {
+      varshaMissCount++;
+      updateCountersUI();
+      showFlashMessage(`💗 Varsha missed Ishan (${varshaMissCount} times) 💗`);
+    }
+  }
+
+  // CORRECT DAY COUNT FUNCTION
+  function updateTimerLove() {
+    let nowDate = new Date();
+    let diff = nowDate - romanceStart;
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((diff % (86400000)) / 3600000);
+    let minutes = Math.floor((diff % 3600000) / 60000);
+    
+    if (days < 0) {
+      document.getElementById("liveTimer").innerHTML = `💖 Counting since our special day... 💖`;
+    } else {
+      document.getElementById("liveTimer").innerHTML = `⏱️ ${days} days, ${hours} hours, ${minutes} minutes together · Total signals: ${ishanMissCount + varshaMissCount} 💖`;
+    }
+  }
+  setInterval(updateTimerLove, 1000);
+
+  function setUserMode(mode) {
+    currentUserMode = mode;
+    const ishanBtn = document.getElementById("ishanModeBtn");
+    const varshaBtn = document.getElementById("varshaModeBtn");
+    if (mode === "ishan") {
+      ishanBtn.classList.add("ishan-active");
+      varshaBtn.classList.remove("varsha-active");
+      varshaBtn.style.background = "rgba(30,15,45,0.6)";
+      ishanBtn.style.background = "linear-gradient(95deg, #2c3e66, #1a2a4f)";
+      showFlashMessage("💙 Ishan Mode Active — Your messages will count as 'Ishan missed Varsha' 💙");
+    } else {
+      varshaBtn.classList.add("varsha-active");
+      ishanBtn.classList.remove("ishan-active");
+      ishanBtn.style.background = "rgba(30,15,45,0.6)";
+      varshaBtn.style.background = "linear-gradient(95deg, #b23c6a, #882c55)";
+      showFlashMessage("🌸 Varsha Mode Active — Your messages will count as 'Varsha missed Ishan' 🌸");
+    }
+  }
+
   function setMood(mood) {
     currentMood = mood;
     document.querySelectorAll(".mood-pill").forEach(pill => {
@@ -360,17 +566,15 @@
     const moodInfo = moodData[mood];
     if (moodInfo) {
       document.getElementById("moodMessageDisplay").innerHTML = `✨ ${moodInfo.label} ✨`;
-      // render dynamic buttons
       const container = document.getElementById("dynamicButtons");
       container.innerHTML = "";
       moodInfo.messages.forEach(msg => {
         const btn = document.createElement("button");
         btn.className = "action-btn";
-        btn.innerHTML = msg.text.length > 28 ? msg.text.slice(0, 26)+".." : msg.text;
+        btn.innerHTML = msg.text.length > 32 ? msg.text.slice(0, 30) + ".." : msg.text;
         btn.onclick = () => sendMoodBasedMessage(msg.text, msg.type);
         container.appendChild(btn);
       });
-      // If angry has extra actions
       if (mood === "angry" && moodInfo.extraActions) {
         moodInfo.extraActions.forEach(extra => {
           const extraBtn = document.createElement("button");
@@ -384,81 +588,52 @@
     }
   }
 
-  // Core function to send any mood action
   function sendMoodBasedMessage(fullText, actionType) {
-    let actionKey = `${currentMood}_${actionType}`;
-    incrementLoveCounter(actionKey, fullText);
+    incrementCounterBasedOnMode();
     
-    // special effects: for love mood -> romantic fireworks & floating names
+    // Visual effects based on mood
     if (currentMood === "love") {
       createFloatingNameWithCrackers("Ishan ❤️ Varsha");
-      burstCrackersEffect(25);
-      spawnFloatingEmojis(["💖","💋","🤗","💞","✨"], 12);
-    } 
-    else if (currentMood === "angry") {
-      spawnFloatingEmojis(["😤","💢","😡","🤗","❤️‍🩹"], 10);
-      burstCrackersEffect(12);
+      burstCrackersEffect(22);
+      spawnFloatingEmojis(["💖","💋","🤗","💞","✨","🌹"], 14);
+    } else if (currentMood === "angry") {
+      spawnFloatingEmojis(["😤","💢","👋","💥","🏃","💧","💊","🍼"], 15);
+      burstCrackersEffect(18);
+      createFloatingNameWithCrackers("Angry but Cute 💕");
+    } else if (currentMood === "ask") {
+      createFloatingNameWithCrackers("💭 Pyaar se pucho 💭");
+      spawnFloatingEmojis(["❓","💌","🌙","😘"], 10);
+    } else if (currentMood === "secret") {
+      createFloatingNameWithCrackers("🤫 Sirf tumhare liye 🤫");
+      spawnFloatingEmojis(["🔐","💌","🌹","✨","💋"], 15);
     }
-    else if (currentMood === "ask") {
-      createFloatingNameWithCrackers("💭 Ask Me Anything 💭");
-      spawnFloatingEmojis(["❓","💌","🌙"], 8);
-      // additional ask simulation: show floating question mark
+    
+    let senderDisplay = currentUserMode === "ishan" ? "Ishan 💙" : "Varsha 🌸";
+    sendToBothTelegrams(senderDisplay, fullText, currentMood.toUpperCase());
+    
+    let totalInteractions = ishanMissCount + varshaMissCount;
+    if (totalInteractions >= 10 && !proposalShownFlag) {
+      proposalShownFlag = true;
+      setTimeout(() => document.getElementById("proposalModal").classList.remove("hidden"), 700);
     }
-    else if (currentMood === "secret") {
-      createFloatingNameWithCrackers("🤫 Secret Shared 🤫");
-      spawnFloatingEmojis(["🔐","💌","🌹","✨"], 14);
-    }
-
-    // Show custom message feedback + store to localStorage "conversations"
-    showFlashMessage(`💗 "${fullText.substring(0, 45)}" 💗`);
-    // Telegram simulation (pretend notification at my end)
-    sendTelegramSimulation(`[${currentMood.toUpperCase()}] ${fullText}`);
   }
 
-  // send custom typed message (textarea)
   function sendCustomWithMood() {
     let customText = document.getElementById("customMessageInput").value.trim();
     if (!customText) {
-      showFlashMessage("💬 write something first love...");
+      showFlashMessage("💬 Kuch likho mere liye...");
       return;
     }
-    incrementLoveCounter(`custom_${currentMood}`, customText);
-    // create special effect: floating name with custom text
-    createFloatingNameWithCrackers(`💌 ${customText.substring(0, 20)}`);
+    incrementCounterBasedOnMode();
+    createFloatingNameWithCrackers(`💌 ${customText.substring(0, 22)}`);
     burstCrackersEffect(20);
-    spawnFloatingEmojis(["💖","📜","✨","💋"], 12);
-    showFlashMessage("✨ your secret reached my heart ✨");
-    sendTelegramSimulation(`[${currentMood} CUSTOM] ${customText}`);
+    spawnFloatingEmojis(["💖","📜","✨","💋","💌"], 14);
+    let senderDisplay = currentUserMode === "ishan" ? "Ishan 💙" : "Varsha 🌸";
+    sendToBothTelegrams(senderDisplay + " (Custom)", customText, currentMood.toUpperCase());
     document.getElementById("customMessageInput").value = "";
   }
 
-  // INCREMENT love counter & effects
-  function incrementLoveCounter(origin, rawMsg) {
-    loveCounter++;
-    localStorage.setItem("varshaLoveCount", loveCounter);
-    updateCounterText();
-    // trigger proposal if loveCounter reach certain love
-    if (loveCounter >= 10 && !proposalShownFlag) {
-      proposalShownFlag = true;
-      setTimeout(() => {
-        document.getElementById("proposalModal").classList.remove("hidden");
-      }, 600);
-    }
-    // extra romantic cracker on each send
-    burstCrackersEffect(8);
-  }
-
-  function updateCounterText() {
-    let counterElem = document.getElementById("liveTimer");
-    if (counterElem) {
-      let now = new Date();
-      let diff = now - romanceStart;
-      let days = Math.floor(diff / 86400000);
-      counterElem.innerHTML = `⏱️ ${days} days together · ${loveCounter} love signals 💖`;
-    }
-  }
-
-  // ========== ANIMATIONS ==========
+  // Animation Functions
   function createFloatingNameWithCrackers(nameText) {
     for (let i = 0; i < 3; i++) {
       let floatingDiv = document.createElement("div");
@@ -481,7 +656,6 @@
       crack.style.top = Math.random() * (window.innerHeight * 0.8) + "px";
       crack.style.width = (6 + Math.random() * 10) + "px";
       crack.style.height = crack.style.width;
-      crack.style.background = `radial-gradient(circle, #ffaa55, #ff3b6f)`;
       document.body.appendChild(crack);
       setTimeout(() => crack.remove(), 900);
     }
@@ -503,122 +677,27 @@
     }
   }
 
-  function showFlashMessage(msg) {
-    let flash = document.createElement("div");
-    flash.innerText = msg;
-    flash.style.position = "fixed";
-    flash.style.bottom = "30%";
-    flash.style.left = "50%";
-    flash.style.transform = "translateX(-50%)";
-    flash.style.background = "#ff3388cc";
-    flash.style.backdropFilter = "blur(12px)";
-    flash.style.padding = "10px 22px";
-    flash.style.borderRadius = "40px";
-    flash.style.fontWeight = "bold";
-    flash.style.zIndex = "300";
-    flash.style.color = "white";
-    flash.style.animation = "fadeMsg 1.8s forwards";
-    document.body.appendChild(flash);
-    setTimeout(() => flash.remove(), 1800);
+  function toggleMusic() {
+    if (bgMusic.paused) { bgMusic.play().catch(()=>{}); bgMusic.volume = 0.3; }
+    else bgMusic.pause();
   }
-  const fadeKey = document.createElement('style');
-  fadeKey.textContent = `@keyframes fadeMsg { 0%{ opacity:1; bottom:30%; } 100%{ opacity:0; bottom:45%; } }`;
-  document.head.appendChild(fadeKey);
 
-// ============ REAL TELEGRAM NOTIFICATION ============
-function sendTelegramSimulation(content) {
-  const BOT_TOKEN = "8787860636:AAGGr4F7AS7udoIp5nUBIoUi1oPkEje8Bog";
-  const CHAT_ID = "1175249222";  // 👈 GET THIS FROM @userinfobot
-  
-  // Format message beautifully
-  const message = `✨💖 NEW LOVE MESSAGE 💖✨\n\n📝 ${content}\n\n⏰ ${new Date().toLocaleString()}\n💕 From your special someone 💕`;
-  
-  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      chat_id: CHAT_ID,
-      text: message,
-      parse_mode: "HTML"
-    })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.ok) {
-      console.log("✅ Telegram message sent!");
-      // Show floating success
-      showTelegramSuccess();
-    } else {
-      console.log("Telegram error:", data.description);
-    }
-  })
-  .catch(err => console.log("Network error:", err));
-}
-
-function showTelegramSuccess() {
-  let notify = document.createElement("div");
-  notify.innerText = "💌 Message sent to Ishan's Telegram! 💌";
-  notify.style.position = "fixed";
-  notify.style.bottom = "80px";
-  notify.style.left = "50%";
-  notify.style.transform = "translateX(-50%)";
-  notify.style.background = "#ff3388";
-  notify.style.padding = "10px 24px";
-  notify.style.borderRadius = "50px";
-  notify.style.color = "white";
-  notify.style.fontWeight = "bold";
-  notify.style.zIndex = "999";
-  notify.style.boxShadow = "0 0 20px #ff3388";
-  document.body.appendChild(notify);
-  setTimeout(() => notify.remove(), 2500);
-}
-
-  // Timer updates
-  function updateTimerLove() {
-    let nowDate = new Date();
-    let diffSeconds = (nowDate - romanceStart) / 1000;
-    if (diffSeconds < 0) diffSeconds = 0;
-    let days = Math.floor(diffSeconds / 86400);
-    let hours = Math.floor((diffSeconds % 86400) / 3600);
-    let minutes = Math.floor((diffSeconds % 3600) / 60);
-    let timerElem = document.getElementById("liveTimer");
-    if (timerElem && !timerElem.innerText.includes("love signals")) {
-      timerElem.innerHTML = `⏱️ ${days}d ${hours}h ${minutes}m · together forever 💖`;
-    } else if (timerElem) {
-      updateCounterText();
-    }
-  }
-  setInterval(updateTimerLove, 1000);
-  
-  // Music fade & toggle
   function initMusicFade() {
     bgMusic.volume = 0;
     bgMusic.play().catch(e=>console.log);
-    let volInterval = setInterval(() => {
-      if (bgMusic.volume < 0.32) { bgMusic.volume += 0.02; }
-      else clearInterval(volInterval);
-    }, 150);
-  }
-  function toggleMusic() {
-    if (bgMusic.paused) {
-      bgMusic.play().catch(()=>{});
-      bgMusic.volume = 0.3;
-    } else {
-      bgMusic.pause();
-    }
+    let volInterval = setInterval(() => { if (bgMusic.volume < 0.32) bgMusic.volume += 0.02; else clearInterval(volInterval); }, 150);
   }
 
-  // Proposal accept 
   function acceptProposal() {
-    alert("💍💖 YES! You are my forever, my universe! 💖💍");
+    alert("💍💖 YES! Forever begins, my universe! 💖💍");
     document.getElementById("proposalModal").classList.add("hidden");
     burstCrackersEffect(55);
     createFloatingNameWithCrackers("💍 ETERNALLY YOURS 💍");
     spawnFloatingEmojis(["💍","👰‍♀️","🤵","💒","✨"], 35);
-    sendTelegramSimulation("✨ PROPOSAL ACCEPTED — FOREVER BEGINS ✨");
+    sendToBothTelegrams(currentUserMode === "ishan" ? "Ishan" : "Varsha", "💍 PROPOSAL ACCEPTED — FOREVER AND ALWAYS 💍", "PROPOSAL");
   }
-  
-  // no button runaway
+
+  // Event Listeners
   const noRunBtn = document.getElementById("runawayNo");
   if (noRunBtn) {
     noRunBtn.addEventListener("mouseover", function() {
@@ -629,56 +708,35 @@ function showTelegramSuccess() {
       noRunBtn.style.left = `${Math.max(5, newX)}px`;
       noRunBtn.style.top = `${Math.max(5, newY)}px`;
     });
-    noRunBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      alert("💖 You can't escape destiny.... I'll wait forever 💖");
-    });
+    noRunBtn.addEventListener("click", (e) => { e.stopPropagation(); alert("💖 You can't escape destiny.... I'll wait forever 💖"); });
   }
 
-  // secret garden double tap
-  document.addEventListener("dblclick", () => {
-    const garden = document.getElementById("secretGardenModal");
-    if (garden.classList.contains("hidden")) garden.classList.remove("hidden");
-  });
-  window.closeSecretGarden = () => {
-    document.getElementById("secretGardenModal").classList.add("hidden");
-  };
-  
-  // Particles initialization
+  document.addEventListener("dblclick", () => { document.getElementById("secretGardenModal").classList.remove("hidden"); });
+  window.closeSecretGarden = () => { document.getElementById("secretGardenModal").classList.add("hidden"); };
+
+  // Initialize Particles
   particlesJS("particles-js", {
-    particles: {
-      number: { value: 180, density: { enable: true, value_area: 800 } },
-      color: { value: ["#FFB7C5", "#ff88bb", "#ffb3d9", "#ff5e8b"] },
-      shape: { type: "circle" },
-      opacity: { value: 0.7, random: true },
-      size: { value: 2, random: true },
-      move: { enable: true, speed: 0.7, random: true, out_mode: "out" }
-    },
+    particles: { number: { value: 180 }, color: { value: ["#FFB7C5", "#ff88bb"] }, shape: { type: "circle" }, opacity: { value: 0.7 }, size: { value: 2 }, move: { enable: true, speed: 0.7 } },
     interactivity: { events: { onhover: { enable: true, mode: "bubble" } }, modes: { bubble: { distance: 100, size: 4 } } }
   });
-  
-  // Event listeners
-  document.querySelectorAll(".mood-pill").forEach(pill => {
-    pill.addEventListener("click", (e) => {
-      setMood(pill.getAttribute("data-mood"));
-    });
-  });
+
+  document.querySelectorAll(".mood-pill").forEach(pill => { pill.addEventListener("click", () => setMood(pill.getAttribute("data-mood"))); });
   document.getElementById("sendMoodAction").addEventListener("click", sendCustomWithMood);
+  document.getElementById("ishanModeBtn").addEventListener("click", () => setUserMode("ishan"));
+  document.getElementById("varshaModeBtn").addEventListener("click", () => setUserMode("varsha"));
   
-  // initial default mood load
+  // Initialize
   setMood("love");
-  updateCounterText();
+  setUserMode("ishan");
+  updateCountersUI();
+  updateTimerLove();
   
-  window.addEventListener("load", () => {
-    updateTimerLove();
-    setTimeout(() => {
-      bgMusic.play().catch(()=>{});
-      initMusicFade();
-    }, 500);
-    setInterval(() => {
-      if (Math.random() > 0.85) spawnFloatingEmojis(["💫","✨","⭐"], 3);
-    }, 5000);
-  });
+  window.addEventListener("load", () => { setTimeout(() => { bgMusic.play().catch(()=>{}); initMusicFade(); }, 500); });
+  
+  const styleFade = document.createElement('style');
+  styleFade.textContent = `@keyframes fadeMsg { 0%{ opacity:1; bottom:30%; } 100%{ opacity:0; bottom:45%; } }`;
+  document.head.appendChild(styleFade);
 </script>
 </body>
 </html>
+ 
