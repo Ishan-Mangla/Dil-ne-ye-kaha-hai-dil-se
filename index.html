@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>💞 Ishan & Varsha - Our Duo Universe 💞</title>
+  <title>✨ Ishan & Varsha - Our Eternal Universe 💑✨</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Playfair+Display:wght@700;900&family=Fredoka:wght@400;600;700&display=swap');
+
     * {
       margin: 0;
       padding: 0;
@@ -12,15 +14,29 @@
       user-select: none;
     }
 
-    body {
-      background: radial-gradient(ellipse at 30% 40%, #0f071f, #02000a);
-      min-height: 100vh;
-      overflow-x: hidden;
-      font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
-      color: #fff0f7;
-      cursor: crosshair;
+    :root {
+      --primary-pink: #ff3b6f;
+      --secondary-pink: #ff77aa;
+      --tertiary-pink: #ffc0e8;
+      --ishan-blue: #4a7cff;
+      --varsha-magenta: #ff1493;
+      --glow-pink: #ff4d88;
+      --dark-bg: #0a0015;
+      --light-overlay: rgba(255, 59, 111, 0.08);
+      --border-glow: rgba(255, 120, 170, 0.5);
     }
 
+    body {
+      background: linear-gradient(135deg, #0a0015 0%, #1a0025 50%, #0f0518 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      color: #fff0f7;
+      cursor: crosshair;
+      position: relative;
+    }
+
+    /* Animated background particles */
     #cosmic-bg {
       position: fixed;
       top: 0;
@@ -28,8 +44,11 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-      background: radial-gradient(circle at 20% 40%, #ff99cc10, #000000);
+      background: radial-gradient(circle at 20% 40%, rgba(255, 99, 200, 0.1), transparent 50%),
+                  radial-gradient(circle at 80% 60%, rgba(74, 124, 255, 0.08), transparent 50%);
+      pointer-events: none;
     }
+
     #particles-js {
       position: fixed;
       top: 0;
@@ -40,467 +59,871 @@
       pointer-events: none;
     }
 
+    /* Main container */
+    .main-container {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Header with floating hearts */
+    .header-section {
+      text-align: center;
+      margin-bottom: 30px;
+      animation: slideInDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff3b6f, #ffc0e8, #ff77aa, #ff1493);
+      background-size: 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 4s ease infinite;
+      text-shadow: 0 0 40px rgba(255, 59, 111, 0.4);
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #ffc0e8;
+      font-weight: 600;
+      letter-spacing: 2px;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Timer badge */
+    .timer-section {
+      margin: 25px 0;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+
+    .timer-badge {
+      background: rgba(255, 59, 111, 0.12);
+      backdrop-filter: blur(16px);
+      border: 2px solid var(--border-glow);
+      border-radius: 80px;
+      padding: 14px 32px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: inline-block;
+      color: #ff77aa;
+      box-shadow: 0 0 30px rgba(255, 59, 111, 0.3), inset 0 0 20px rgba(255, 200, 232, 0.1);
+      letter-spacing: 1px;
+    }
+
+    /* Mood Card Container */
     .mood-card {
       position: relative;
       z-index: 20;
-      backdrop-filter: blur(24px);
-      background: rgba(12, 5, 25, 0.55);
-      border-radius: 56px;
+      backdrop-filter: blur(32px);
+      background: linear-gradient(135deg, rgba(20, 5, 35, 0.75), rgba(15, 5, 30, 0.85));
+      border-radius: 64px;
       width: 94%;
-      max-width: 650px;
-      margin: 1.5rem auto;
-      padding: 1.8rem 1.6rem;
+      max-width: 720px;
+      padding: 2.5rem 2rem;
       text-align: center;
-      border: 1.5px solid rgba(255, 120, 170, 0.7);
-      box-shadow: 0 30px 45px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,90,140,0.2), 0 0 28px #ff3b7f80;
+      border: 2px solid var(--border-glow);
+      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.7), 
+                  0 0 0 1px rgba(255, 120, 170, 0.3),
+                  0 0 40px rgba(255, 59, 111, 0.25);
+      animation: fadeInUp 0.8s ease 0.6s both;
     }
 
+    /* Mode Switch */
     .mode-switch {
       display: flex;
-      gap: 15px;
+      gap: 16px;
       justify-content: center;
-      margin-bottom: 20px;
-      background: rgba(0,0,0,0.4);
-      border-radius: 80px;
-      padding: 6px;
-      backdrop-filter: blur(8px);
+      margin: 25px 0;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 90px;
+      padding: 8px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 120, 170, 0.3);
     }
+
     .mode-btn {
       flex: 1;
-      padding: 12px 10px;
-      border-radius: 60px;
+      padding: 14px 12px;
+      border-radius: 70px;
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
-      transition: 0.3s;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
       text-align: center;
-      border: none;
-      background: rgba(30,15,45,0.6);
+      border: 2px solid transparent;
+      background: rgba(30, 15, 45, 0.4);
       color: #ffccdd;
+      position: relative;
+      overflow: hidden;
     }
+
+    .mode-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .mode-btn:hover::before {
+      left: 100%;
+    }
+
     .mode-btn.ishan-active {
-      background: linear-gradient(95deg, #2c3e66, #1a2a4f);
-      box-shadow: 0 0 20px #4a7cff;
-      color: white;
-      border: 1px solid #88bbff;
+      background: linear-gradient(135deg, #2c3e66, #1a2a4f, #3d5a99);
+      box-shadow: 0 0 30px #4a7cff, inset 0 0 20px rgba(74, 124, 255, 0.2);
+      color: #e8f0ff;
+      border: 2px solid #4a7cff;
+      transform: scale(1.02);
     }
+
     .mode-btn.varsha-active {
-      background: linear-gradient(95deg, #b23c6a, #882c55);
-      box-shadow: 0 0 20px #ff77aa;
-      color: white;
-      border: 1px solid #ff99cc;
+      background: linear-gradient(135deg, #b23c6a, #882c55, #d64e99);
+      box-shadow: 0 0 30px #ff77aa, inset 0 0 20px rgba(255, 119, 170, 0.2);
+      color: #fff0f7;
+      border: 2px solid #ff77aa;
+      transform: scale(1.02);
     }
 
+    small {
+      display: block;
+      font-size: 0.7rem;
+      opacity: 0.85;
+      margin-top: 4px;
+    }
+
+    /* Counters */
     .duo-counters {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      margin: 15px 0 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 25px 0;
     }
+
     .counter-card {
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(16px);
       border-radius: 48px;
-      padding: 10px 15px;
-      flex: 1;
+      padding: 16px;
       text-align: center;
-      border: 1px solid #ff99cc;
+      border: 2px solid var(--secondary-pink);
+      box-shadow: 0 0 20px rgba(255, 119, 170, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
+
+    .counter-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 119, 170, 0.1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .counter-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(255, 119, 170, 0.3), 0 0 30px rgba(255, 119, 170, 0.2);
+    }
+
     .counter-card h3 {
-      font-size: 0.85rem;
-      opacity: 0.9;
+      font-size: 1rem;
+      opacity: 0.95;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
-    .counter-card .count-number {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(95deg, #ff99cc, #ff6699);
+
+    .count-number {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ff77aa, #ff3b6f, #ffb7c5);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: countPulse 2s ease infinite;
     }
 
-    .glow-title {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffc0e8, #ff6699, #ff3366);
-      background-size: 200%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: aurora 4s linear infinite;
-      margin-bottom: 12px;
+    @keyframes countPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
-    @keyframes aurora {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
+    .counter-card small {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 6px;
     }
 
+    /* Mood Pills */
     .mood-selector {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       justify-content: center;
-      margin: 15px 0 10px;
+      margin: 25px 0;
     }
+
     .mood-pill {
-      background: rgba(30, 15, 45, 0.8);
-      backdrop-filter: blur(8px);
-      padding: 8px 20px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: 0.2s;
-      border: 1px solid #ff99bb;
-      color: #ffdbee;
-    }
-    .mood-pill.active, .mood-pill:hover {
-      background: linear-gradient(95deg, #ff3b6f, #ff7eae);
-      transform: scale(1.03);
-      box-shadow: 0 0 14px #ff4d88;
-    }
-
-    .message-area {
-      background: rgba(0,0,0,0.5);
-      border-radius: 40px;
-      padding: 12px;
-      margin: 16px 0;
-      min-height: 70px;
-      backdrop-filter: blur(4px);
-    }
-
-    .button-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 18px 0;
-    }
-    .action-btn {
-      flex: 1;
-      background: linear-gradient(105deg, #ff2e63, #ff77aa);
-      border: none;
-      padding: 12px 5px;
+      background: rgba(40, 20, 55, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 10px 22px;
       border-radius: 50px;
       font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 2px solid #ff99bb;
+      color: #ffdbee;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mood-pill::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mood-pill:hover::before,
+    .mood-pill.active::before {
+      opacity: 1;
+    }
+
+    .mood-pill.active, .mood-pill:hover {
+      background: linear-gradient(135deg, #ff3b6f, #ff7eae, #ffb7c5);
+      transform: scale(1.08) translateY(-4px);
+      box-shadow: 0 10px 30px rgba(255, 59, 111, 0.4), 0 0 20px rgba(255, 126, 174, 0.3);
+      color: white;
+    }
+
+    /* Message Display */
+    .message-area {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(255, 59, 111, 0.05));
+      border-radius: 40px;
+      padding: 18px;
+      margin: 20px 0;
+      min-height: 80px;
+      backdrop-filter: blur(8px);
+      border: 2px solid var(--secondary-pink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ffc0e8;
+      box-shadow: inset 0 0 20px rgba(255, 192, 232, 0.1);
+    }
+
+    /* Buttons */
+    .button-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+      width: 100%;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, #ff2e63, #ff77aa, #ffb7c5);
+      border: none;
+      padding: 13px 8px;
+      border-radius: 50px;
+      font-weight: 800;
       font-size: 0.85rem;
       color: white;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-    }
-    .action-btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.05);
-      box-shadow: 0 0 16px #ff4d88;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(255, 59, 111, 0.3);
     }
 
-    .input-group {
-      margin: 10px 0;
+    .action-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
     }
+
+    .action-btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .action-btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      filter: brightness(1.15);
+      box-shadow: 0 15px 35px rgba(255, 59, 111, 0.5), 0 0 30px rgba(255, 200, 232, 0.3);
+    }
+
+    .action-btn:active {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Input */
+    .input-group {
+      margin: 20px 0;
+      width: 100%;
+    }
+
     textarea {
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 60px;
-      border: 1px solid #ff88bb;
-      background: rgba(0,0,0,0.6);
-      color: white;
-      font-size: 0.9rem;
+      padding: 14px 18px;
+      border-radius: 28px;
+      border: 2px solid var(--secondary-pink);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff0f7;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
       resize: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 119, 170, 0.1);
+    }
+
+    textarea:focus {
+      outline: none;
+      background: rgba(0, 0, 0, 0.4);
+      border-color: var(--primary-pink);
+      box-shadow: 0 0 30px rgba(255, 59, 111, 0.3), inset 0 0 15px rgba(255, 59, 111, 0.08);
+    }
+
+    textarea::placeholder {
+      color: #ff99bb;
+      opacity: 0.8;
     }
 
     /* Animations */
     .floating-name {
       position: fixed;
       font-size: 2rem;
-      font-weight: bold;
-      background: linear-gradient(45deg, gold, hotpink);
+      font-weight: 900;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(45deg, #ffc0e8, #ff3b6f);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      filter: drop-shadow(0 0 10px #ff4d88);
+      filter: drop-shadow(0 0 15px #ff4d88);
       z-index: 200;
       pointer-events: none;
-      animation: floatName 5s ease-out forwards;
+      animation: floatNameEnhanced 5s ease-out forwards;
     }
-    @keyframes floatName {
-      0% { transform: translateY(0) scale(0.6); opacity: 1; }
-      100% { transform: translateY(-180px) scale(1.3); opacity: 0; }
+
+    @keyframes floatNameEnhanced {
+      0% { 
+        transform: translateY(0) scale(0.5) rotate(-15deg);
+        opacity: 1;
+      }
+      100% { 
+        transform: translateY(-200px) scale(1.5) rotate(15deg);
+        opacity: 0;
+      }
     }
 
     .cracker-burst {
       position: fixed;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       background: radial-gradient(circle, #ffcc44, #ff3366);
       border-radius: 50%;
       pointer-events: none;
-      animation: crackPop 1s ease-out forwards;
+      animation: crackPopEnhanced 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       z-index: 180;
+      box-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
     }
-    @keyframes crackPop {
-      0% { transform: scale(0); opacity: 1; }
-      100% { transform: scale(1.8); opacity: 0; }
+
+    @keyframes crackPopEnhanced {
+      0% { 
+        transform: scale(0) translate(0, 0);
+        opacity: 1;
+      }
+      100% { 
+        transform: scale(2.2) translate(var(--tx, 0), var(--ty, 0));
+        opacity: 0;
+      }
     }
 
     .floating-emoji {
       position: fixed;
-      font-size: 2rem;
+      font-size: 2.2rem;
       pointer-events: none;
-      animation: swirlyUp 2.2s forwards;
+      animation: swirlyUpEnhanced 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       z-index: 150;
-    }
-    @keyframes swirlyUp {
-      0% { transform: translate(0,0) rotate(0deg); opacity: 1; }
-      100% { transform: translate(var(--dx, 50px), -120px) rotate(20deg); opacity: 0; }
+      filter: drop-shadow(0 0 8px rgba(255, 59, 111, 0.5));
     }
 
+    @keyframes swirlyUpEnhanced {
+      0% { 
+        transform: translate(0, 0) rotate(0deg) scale(0.8);
+        opacity: 1;
+      }
+      100% { 
+        transform: translate(var(--dx, 50px), -150px) rotate(35deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Modals */
     .proposal-modal, .secret-modal {
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.96);
-      backdrop-filter: blur(32px);
+      transform: translate(-50%, -50%) scale(0);
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(20, 5, 35, 0.95));
+      backdrop-filter: blur(40px);
       border-radius: 64px;
-      padding: 2rem;
+      padding: 2.5rem;
       text-align: center;
       z-index: 400;
-      border: 2px solid #ff77aa;
+      border: 2px solid var(--secondary-pink);
       width: 90%;
-      max-width: 360px;
+      max-width: 400px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 0 0 50px rgba(255, 59, 111, 0.3);
+      animation: modalPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
+
+    @keyframes modalPop {
+      to {
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    .proposal-modal h2, .secret-modal h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ff3b6f, #ffc0e8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .proposal-modal p, .secret-modal p {
+      font-size: 1.1rem;
+      margin: 16px 0;
+      color: #ffc0e8;
+      line-height: 1.6;
+    }
+
     .hidden {
       display: none !important;
     }
-    .close-btn {
-      margin-top: 12px;
-      background: #ff4477;
-      padding: 8px 24px;
-      border-radius: 60px;
+
+    .modal-btn {
+      background: linear-gradient(135deg, #ff3b6f, #ff77aa);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(255, 59, 111, 0.3);
     }
 
-    .timer-badge {
-      background: #00000066;
-      border-radius: 60px;
-      padding: 6px 12px;
-      font-size: 0.85rem;
-      display: inline-block;
-      margin: 8px 0;
+    .modal-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255, 59, 111, 0.5);
+    }
+
+    /* Music button */
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #4a7cff, #ff77aa);
+      border: none;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      z-index: 50;
+      box-shadow: 0 10px 30px rgba(74, 124, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 15px 40px rgba(74, 124, 255, 0.6);
+    }
+
+    .music-btn.playing {
+      animation: musicPulse 1.5s ease infinite;
+    }
+
+    @keyframes musicPulse {
+      0%, 100% { box-shadow: 0 10px 30px rgba(74, 124, 255, 0.4); }
+      50% { box-shadow: 0 10px 50px rgba(74, 124, 255, 0.7); }
     }
 
     footer {
-      font-size: 0.65rem;
-      margin-top: 16px;
+      font-size: 0.8rem;
+      margin-top: 20px;
       opacity: 0.7;
+      color: #ffc0e8;
+      animation: fadeInUp 0.8s ease 1s both;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-title { font-size: 2.2rem; }
+      .subtitle { font-size: 1rem; }
+      .mood-card { padding: 1.8rem 1.4rem; }
+      .button-group { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Notification popup */
+    .notification {
+      position: fixed;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff3b6f, #ff77aa);
+      padding: 14px 28px;
+      border-radius: 50px;
+      color: white;
+      font-weight: 800;
+      z-index: 500;
+      box-shadow: 0 10px 30px rgba(255, 59, 111, 0.5);
+      animation: slideUp 0.5s ease, slideDown 0.5s ease 2.5s;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+      to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from { transform: translateX(-50%) translateY(0); opacity: 1; }
+      to { transform: translateX(-50%) translateY(100px); opacity: 0; }
+    }
+
+    .heart-rain {
+      position: fixed;
+      font-size: 2rem;
+      pointer-events: none;
+      animation: heartRain 2.5s ease-in forwards;
+      z-index: 150;
+    }
+
+    @keyframes heartRain {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
     }
   </style>
+
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 <div id="cosmic-bg"></div>
 <div id="particles-js"></div>
 
-<div class="mood-card">
-  <h1 class="glow-title">💑 Ishan ❤️ Varsha • Duo Hearts 💑</h1>
-  
-  <div class="mode-switch">
-    <button id="ishanModeBtn" class="mode-btn ishan-active">💙 ISHAN MODE 💙<br><small>I'm Ishan</small></button>
-    <button id="varshaModeBtn" class="mode-btn">🌸 VARSHA MODE 🌸<br><small>I'm Varsha</small></button>
+<div class="main-container">
+  <div class="header-section">
+    <h1 class="main-title">💑 Ishan & Varsha 💑</h1>
+    <p class="subtitle">Our Eternal Love Story ✨</p>
   </div>
-  
-  <div class="timer-badge" id="liveTimer">💖 counting heartbeats...</div>
-  
-  <div class="duo-counters">
-    <div class="counter-card">
-      <h3>💙 Ishan Missed Varsha</h3>
-      <div class="count-number" id="ishanMissCounter">0</div>
-      <small>times he thought of her</small>
+
+  <div class="mood-card">
+    <div class="timer-section">
+      <div class="timer-badge" id="liveTimer">💖 Counting heartbeats...</div>
     </div>
-    <div class="counter-card">
-      <h3>💗 Varsha Missed Ishan</h3>
-      <div class="count-number" id="varshaMissCounter">0</div>
-      <small>times she felt his love</small>
+
+    <div class="mode-switch">
+      <button id="ishanModeBtn" class="mode-btn ishan-active">
+        💙 ISHAN'S HEART 💙
+        <small>I'm Ishan 🥰</small>
+      </button>
+      <button id="varshaModeBtn" class="mode-btn">
+        🌸 VARSHA'S HEART 🌸
+        <small>I'm Varsha 💕</small>
+      </button>
     </div>
+
+    <div class="duo-counters">
+      <div class="counter-card">
+        <h3>💙 Ishan's Love Signals</h3>
+        <div class="count-number" id="ishanMissCounter">0</div>
+        <small>Times he thought of her</small>
+      </div>
+      <div class="counter-card">
+        <h3>💗 Varsha's Love Signals</h3>
+        <div class="count-number" id="varshaMissCounter">0</div>
+        <small>Times she felt his love</small>
+      </div>
+    </div>
+
+    <div class="mood-selector">
+      <div class="mood-pill active" data-mood="love">💖 Romantic Vibes</div>
+      <div class="mood-pill" data-mood="cute">🥰 Cutie Patootie</div>
+      <div class="mood-pill" data-mood="angry">😤 Playfully Mad</div>
+      <div class="mood-pill" data-mood="ask">❓ Ask Anything</div>
+      <div class="mood-pill" data-mood="secret">🤫 Secret Whispers</div>
+    </div>
+
+    <div class="message-area" id="moodMessageDisplay">✨ Share your feelings with your pookie 💕 ✨</div>
+
+    <div class="button-group" id="dynamicButtons"></div>
+
+    <div class="input-group">
+      <textarea rows="2" id="customMessageInput" placeholder="💬 Type your personal message, question, or sweet secret..."></textarea>
+      <button class="action-btn" id="sendMoodAction" style="margin-top: 10px; width: 100%; font-size: 1rem;">📨 Send Your Love 📨</button>
+    </div>
+
+    <footer>✨ Double-tap for secret garden • Love mode determines message tone 💕 ✨</footer>
   </div>
-
-  <div class="mood-selector">
-    <div class="mood-pill" data-mood="angry">😤 Angry / Miss you</div>
-    <div class="mood-pill" data-mood="love">💖 In Love / Romantic</div>
-    <div class="mood-pill" data-mood="ask">❓ Ask me anything</div>
-    <div class="mood-pill" data-mood="secret">🤫 Secret whispers</div>
-  </div>
-
-  <div class="message-area" id="moodMessageDisplay">✨ Choose your mood, my love ✨</div>
-
-  <div class="button-group" id="dynamicButtons"></div>
-
-  <div class="input-group">
-    <textarea rows="2" id="customMessageInput" placeholder="💬 Type your personal note, question or secret..."></textarea>
-    <button class="action-btn" id="sendMoodAction" style="margin-top: 10px;">📨 Send with current mood 📨</button>
-  </div>
-
-  <button class="action-btn" onclick="toggleMusic()">🎵 Romantic BGM 🎵</button>
-  <footer>✨ double-tap → secret garden ✨ | Mode = Who is using the website ✨</footer>
 </div>
 
+<!-- Proposal Modal -->
 <div id="proposalModal" class="proposal-modal hidden">
-  <h2>💍 Will you be my eternity? 💍</h2>
-  <p>Every heartbeat says YES 💗</p>
-  <button onclick="acceptProposal()">💖 YES, Forever 💖</button>
-  <button id="runawayNo">😜 No (catch me)</button>
+  <h2>💍 Will You Love Me Forever? 💍</h2>
+  <p>Every moment with you is magic ✨<br>Every heartbeat says "I choose YOU" 💕</p>
+  <button class="modal-btn" onclick="acceptProposal()">💖 YES, FOREVER 💖</button>
+  <button id="runawayNo" class="modal-btn" style="background: linear-gradient(135deg, #ff6b9d, #ffb7c5);">😜 Run Away (catch me 🏃‍♀️)</button>
 </div>
 
+<!-- Secret Garden Modal -->
 <div id="secretGardenModal" class="secret-modal hidden">
-  <h2>🔮 Only Your Eyes 🔮</h2>
-  <p style="margin: 15px;">In every universe,<br>I find you. You are my home.</p>
-  <div style="font-size: 2.5rem;">🌙✨💋</div>
-  <button class="close-btn" onclick="closeSecretGarden()">Return to Stars</button>
+  <h2>🔮 Only For You 🔮</h2>
+  <p>In every universe,<br>Every timeline,<br>Every dimension...<br><br>I find YOU 💕<br>You are my forever home 🌙</p>
+  <div style="font-size: 3rem; margin: 20px 0; animation: heartBeat 1.5s infinite;">💋✨🌹</div>
+  <button class="modal-btn" onclick="closeSecretGarden()">Return to Our Stars ⭐</button>
 </div>
 
+<!-- Audio -->
 <audio id="bgRomance" loop preload="auto">
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
 </audio>
 
+<button class="music-btn" id="musicBtn">🎵 MUSIC ON 🎵</button>
+
 <script>
   // ============================================================
-  // CORRECT DAY COUNT - Using your start date from GitHub project
+  // ADVANCED INTERACTIVE COUPLE'S LOVE WEBSITE
   // ============================================================
+
+  // State Management
   let ishanMissCount = parseInt(localStorage.getItem("ishanMissedTotal")) || 0;
   let varshaMissCount = parseInt(localStorage.getItem("varshaMissedTotal")) || 0;
   let currentUserMode = "ishan";
   let currentMood = "love";
   let proposalShownFlag = false;
-  
-  // SET YOUR CORRECT START DATE HERE (YYYY, MM-1, DD)
-  // Example: If you started on April 8, 2026 -> new Date(2026, 3, 8)
-  const romanceStart = new Date(2026, 3, 8);  // April 8, 2026 (month index 3 = April)
-  
+  let musicPlaying = false;
+
+  // IMPORTANT: SET YOUR CORRECT START DATE (YYYY, MM-1, DD)
+  const romanceStart = new Date(2026, 3, 8); // April 8, 2026
+
   const bgMusic = document.getElementById("bgRomance");
+  const musicBtn = document.getElementById("musicBtn");
 
-  // Telegram Bots Config
-  const ISHAN_BOT_TOKEN = "8787860636:AAGGr4F7AS7udoIp5nUBIoUi1oPkEje8Bog";
-  const ISHAN_CHAT_ID = "1175249222";
-  const VARSHAS_BOT_TOKEN = "8639516318:AAHBdDivMd6gdx--L-yO3ZbJ-nmMh8sB3Vs";
-  const VARSHAS_CHAT_ID = "6501910833";
+  // ============================================================
+  // TELEGRAM BOT CONFIGURATION
+  // ============================================================
+  // FIXED: Separate bot tokens for each person
+  const ISHAN_CONFIG = {
+    botToken: "8787860636:AAGGr4F7AS7udoIp5nUBIoUi1oPkEje8Bog",
+    chatId: "1175249222"
+  };
 
-  // ========== UPDATED ANGRY MESSAGES WITH YOUR SPECIAL PHRASES ==========
+  const VARSHA_CONFIG = {
+    botToken: "8639516318:AAHBdDivMd6gdx--L-yO3ZbJ-nmMh8sB3Vs",
+    chatId: "6501910833"
+  };
+
+  // ============================================================
+  // ENHANCED MOOD MESSAGES WITH ADORABLE LANGUAGE
+  // ============================================================
   const moodData = {
-    angry: {
-      label: "😤 Kyaaa hai! Thappad khaoge! 😤",
-      messages: [
-        { text: "😤 kyaaa hai", type: "angry_kya" },
-        { text: "👋 thappad khaoge", type: "angry_thappad" },
-        { text: "💥 muh tod dungi", type: "angry_muhtod" },
-        { text: "🏃 jakr to batao aap", type: "angry_batao" },
-        { text: "💧 I love drinking water", type: "angry_water" },
-        { text: "💊 meri vitamine ki goli", type: "angry_vitamin" },
-        { text: "🍼 baby mera baby", type: "angry_baby" },
-        { text: "😠 OK I'm mad but hug me after? 🥺", type: "angry_miss" },
-        { text: "💢 Naraaz hoon lekin pyaar hai tumse ❤️‍🔥", type: "angry_love" }
-      ],
-      extraActions: ["😡 Sending virtual angry-hug 🤗💢", "💥 Miss you aggressively with pyaar"]
-    },
     love: {
-      label: "💖 Deewangi ka safar 💖",
+      label: "💖 Deewangi Ka Safar 💖",
       messages: [
-        { text: "💖 I love you more than galaxies, forever ❤️", type: "love_deep" },
-        { text: "💞 Tum meri zindagi ki roshni ho ✨", type: "love_heartbeat" },
-        { text: "💋 A thousand kisses flying to you 🌬️💋", type: "love_kiss" },
-        { text: "🤗 I wanna hug you until forever 🤗", type: "love_hug" },
-        { text: "✨ Tumhare bina adhoora/adhoori hoon, come be my forever ✨", type: "love_magic" },
-        { text: "🌹 Tu mera sukoon, mera junoon ❤️‍🔥", type: "love_special" }
+        { text: "💖 You are my favorite person in the entire universe, pookie 🥺", type: "love_1" },
+        { text: "💞 I love you more than galaxies, forever and always ❤️‍🔥", type: "love_2" },
+        { text: "✨ Tum meri zindagi ki roshni ho, without you I'm lost", type: "love_3" },
+        { text: "🌹 Tu mera sukoon, mera junoon, my everything 💋", type: "love_4" },
+        { text: "💕 A thousand kisses wouldn't be enough for you 🌬️💋", type: "love_5" },
+        { text: "🤗 I wanna hold you until forever, my pookie 🤍", type: "love_6" },
+        { text: "👑 You're my queen/king, my everything, my soul 💎", type: "love_7" },
+        { text: "🌙 Hamesha, Hamesha, Hamesha... I'm yours forever 🌙", type: "love_8" },
+        { text: "💗 Tumhare bina adhoora/adhoori hoon, be my forever 🥰", type: "love_9" },
+      ]
+    },
+    cute: {
+      label: "🥰 Pookie Vibes 🥰",
+      messages: [
+        { text: "🥰 You are my favorite person ever, no competition", type: "cute_1" },
+        { text: "💕 Pookie, I miss your cute face right now 🥺", type: "cute_2" },
+        { text: "😘 Send me cuddles through the phone? Pretty please 🥺", type: "cute_3" },
+        { text: "🌸 My cutie patootie, you make me smile so much", type: "cute_4" },
+        { text: "💋 Chupke se mil jayein? Tumhe bahot miss kar raha/rahi hoon", type: "cute_5" },
+        { text: "🎀 You're the cutest thing that ever existed 💕", type: "cute_6" },
+        { text: "👉👈 Can I be your favorite person? 🥺💕", type: "cute_7" },
+        { text: "🌹 Your smile makes my heart go boom-boom 💓", type: "cute_8" },
+        { text: "💞 Pookie dokie, I'm obsessed with you 🥰", type: "cute_9" },
+      ]
+    },
+    angry: {
+      label: "😤 Playfully Mad 😤",
+      messages: [
+        { text: "😤 KYAAA HAI!! Muh tod dungi per pyaar bhi bahot hai 💢", type: "angry_1" },
+        { text: "💥 Naraaz hoon but still yours forever ❤️‍🔥😠", type: "angry_2" },
+        { text: "👋 Thappad khaoge lekin fir se hug karo 😠🤗", type: "angry_3" },
+        { text: "🏃 Jakr to batao aap!! Come back na 🥺", type: "angry_4" },
+        { text: "💧 Ghar mein baith kar vitamine ki goli le rahi/raha hoon 😤", type: "angry_5" },
+        { text: "💊 I'm drinking water and being mad at you both together 🥤💢", type: "angry_6" },
+        { text: "😡 Missing you aggressively with pyaar 💕💢", type: "angry_7" },
+        { text: "🍼 Baby mera baby, come hug your mad pookie 🥺💕", type: "angry_8" },
+        { text: "😤 Angry hug dena padega then sab theek ho jayega", type: "angry_9" },
       ]
     },
     ask: {
-      label: "❓ Pucho mujhse kuch bhi...",
+      label: "❓ Ask Me Anything ❓",
       messages: [
-        { text: "❓ Tum mere baare mein kya sochte ho? 💭", type: "ask_thought" },
-        { text: "💭 Will you marry me one day? 😳", type: "ask_marry" },
-        { text: "⭐ First date ka kya plan hai? Batao na 🌸", type: "ask_meet" },
-        { text: "🌹 Send me a secret emoji jo sirf hum samjhe 🤫", type: "ask_emoji" },
-        { text: "💌 Kya tum mujhe har roz yaad karte ho? 😘", type: "ask_daily" }
+        { text: "❓ Tum mere baare mein kya sochte ho? Honestly batao 💭", type: "ask_1" },
+        { text: "💭 Will you marry me one day? Serious question 😳💍", type: "ask_2" },
+        { text: "⭐ First date ka plan hai? Batao na, I'm excited 🌸", type: "ask_3" },
+        { text: "🌹 Send me your biggest dream with me 💕", type: "ask_4" },
+        { text: "💌 Kya tum mujhe har roz yaad karte ho? 😘", type: "ask_5" },
+        { text: "🎀 What's your favorite thing about us? 🥺💕", type: "ask_6" },
+        { text: "💫 If you could change one thing, what would it be? 🤔", type: "ask_7" },
+        { text: "🌙 What do you love most about my soul? 💙", type: "ask_8" },
       ]
     },
     secret: {
-      label: "🤫 Sirf Tum Suno 🤫",
+      label: "🤫 Secret Whispers 🤫",
       messages: [
-        { text: "🤫 I dreamt about our future last night... we were dancing 💃🕺", type: "secret_dream" },
-        { text: "💌 Hidden letter: Teri mohabbat mein pagal hoon 🥰", type: "secret_letter" },
-        { text: "🔐 Password to my heart is still 'Ishan' ❤️", type: "secret_password" },
-        { text: "🌙 Every timeline, I choose you. Hamesha 🌙", type: "secret_timeline" },
-        { text: "💗 Chupke se bol rahi/raha hun: You are my soulmate 💗", type: "secret_whisper" }
+        { text: "🤫 I dreamt about our future last night... we were dancing 💃🕺✨", type: "secret_1" },
+        { text: "💌 Hidden: Teri mohabbat mein bilkul pagal hoon 🥰❤️", type: "secret_2" },
+        { text: "🔐 Password to my heart is still your name 🔑💕", type: "secret_3" },
+        { text: "🌙 Every timeline, I choose you. Hamesha 🌙💫", type: "secret_4" },
+        { text: "💗 Chupke chupke: You are my soulmate 💗", type: "secret_5" },
+        { text: "👑 Sirf tum jaano: You're my reason to smile 👑✨", type: "secret_6" },
+        { text: "🌹 In my head, I'm planning our forever with you 🌹💕", type: "secret_7" },
+        { text: "💋 This is for your ears only: I'm completely yours 💋🌙", type: "secret_8" },
+        { text: "✨ Secret garden whisper: You complete me, always 💫💕", type: "secret_9" },
       ]
     }
   };
 
-  // Helper Functions
-  async function sendTelegram(botToken, chatId, text) {
+  // ============================================================
+  // TELEGRAM SENDING - FIXED FOR BOTH USERS
+  // ============================================================
+  async function sendTelegramMessage(config, messageText, senderName, mood) {
     try {
-      const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      const timestamp = new Date().toLocaleString("en-IN");
+      const fullMessage = `
+╔════════════════════════════════════════╗
+║     💞 LOVE MESSAGE FROM YOUR POOKIE 💞 ║
+╚════════════════════════════════════════╝
+
+👤 From: ${senderName}
+💕 Mood: ${mood}
+💌 Message: "${messageText}"
+⏰ Sent: ${timestamp}
+
+═══════════════════════════════════════════
+✨ Counting every heartbeat together 💕 ✨
+═══════════════════════════════════════════`;
+
+      const response = await fetch(`https://api.telegram.org/bot${config.botToken}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: "HTML" })
+        body: JSON.stringify({
+          chat_id: config.chatId,
+          text: fullMessage,
+          parse_mode: "HTML"
+        })
       });
+
       return (await response.json()).ok;
-    } catch (err) { return false; }
+    } catch (err) {
+      console.log("Telegram error:", err);
+      return false;
+    }
   }
 
-  async function sendToBothTelegrams(senderName, messageContent, moodType = "love") {
-    const timestamp = new Date().toLocaleString();
-    const fullMessage = `💞✨ ${senderName} sent a message ✨💞\n🎭 Mood: ${moodType}\n💌 "${messageContent}"\n⏰ ${timestamp}\n💖 Our Duo Love 💖`;
+  async function sendToCorrectUser(messageContent, moodType) {
+    const senderName = currentUserMode === "ishan" ? "Ishan 💙" : "Varsha 🌸";
     
-    if (ISHAN_BOT_TOKEN && ISHAN_CHAT_ID && ISHAN_CHAT_ID !== "YOUR_CHAT_ID_HERE") {
-      await sendTelegram(ISHAN_BOT_TOKEN, ISHAN_CHAT_ID, fullMessage);
-    }
-    if (VARSHAS_BOT_TOKEN !== "HER_BOT_TOKEN_HERE" && VARSHAS_CHAT_ID !== "HER_CHAT_ID_HERE") {
-      await sendTelegram(VARSHAS_BOT_TOKEN, VARSHAS_CHAT_ID, fullMessage);
-      showFloatingNotif("💞 Message delivered to both hearts! 💞");
+    // Send ONLY to the person who is NOT sending (fixed)
+    if (currentUserMode === "ishan") {
+      // Ishan sends to Varsha
+      await sendTelegramMessage(VARSHA_CONFIG, messageContent, senderName, moodType);
     } else {
-      showFloatingNotif("💖 Message sent to Ishan!");
+      // Varsha sends to Ishan
+      await sendTelegramMessage(ISHAN_CONFIG, messageContent, senderName, moodType);
     }
+    
+    showNotification("💞 Message delivered to your love! 💞");
   }
 
-  function showFloatingNotif(msg) {
-    let div = document.createElement("div");
-    div.innerText = msg;
-    div.style.position = "fixed";
-    div.style.bottom = "100px";
-    div.style.left = "50%";
-    div.style.transform = "translateX(-50%)";
-    div.style.background = "linear-gradient(95deg, #ff3388, #ff6699)";
-    div.style.padding = "10px 22px";
-    div.style.borderRadius = "60px";
-    div.style.color = "white";
-    div.style.fontWeight = "bold";
-    div.style.zIndex = "1000";
-    div.style.fontSize = "14px";
-    div.style.boxShadow = "0 0 20px #ff3388";
-    document.body.appendChild(div);
-    setTimeout(() => div.remove(), 2800);
-  }
-
-  function showFlashMessage(msg) {
-    let flash = document.createElement("div");
-    flash.innerText = msg;
-    flash.style.position = "fixed";
-    flash.style.bottom = "30%";
-    flash.style.left = "50%";
-    flash.style.transform = "translateX(-50%)";
-    flash.style.background = "#ff3388cc";
-    flash.style.backdropFilter = "blur(12px)";
-    flash.style.padding = "10px 22px";
-    flash.style.borderRadius = "40px";
-    flash.style.fontWeight = "bold";
-    flash.style.zIndex = "300";
-    flash.style.color = "white";
-    flash.style.animation = "fadeMsg 1.8s forwards";
-    document.body.appendChild(flash);
-    setTimeout(() => flash.remove(), 1800);
+  // ============================================================
+  // UI FUNCTIONS
+  // ============================================================
+  function showNotification(msg) {
+    const notif = document.createElement("div");
+    notif.className = "notification";
+    notif.innerHTML = msg;
+    document.body.appendChild(notif);
+    setTimeout(() => notif.remove(), 3000);
   }
 
   function updateCountersUI() {
@@ -510,233 +933,292 @@
     localStorage.setItem("varshaMissedTotal", varshaMissCount);
   }
 
-  function incrementCounterBasedOnMode() {
+  function incrementCounter() {
     if (currentUserMode === "ishan") {
       ishanMissCount++;
-      updateCountersUI();
-      showFlashMessage(`💙 Ishan missed Varsha (${ishanMissCount} times) 💙`);
+      showNotification(`💙 Ishan's Love Signal #${ishanMissCount} 💙`);
     } else {
       varshaMissCount++;
-      updateCountersUI();
-      showFlashMessage(`💗 Varsha missed Ishan (${varshaMissCount} times) 💗`);
+      showNotification(`💗 Varsha's Love Signal #${varshaMissCount} 💗`);
+    }
+    updateCountersUI();
+  }
+
+  function updateTimer() {
+    const now = new Date();
+    const diff = now - romanceStart;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (86400000)) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    
+    if (days < 0) {
+      document.getElementById("liveTimer").innerHTML = `💖 Our story begins soon... 💖`;
+    } else {
+      document.getElementById("liveTimer").innerHTML = 
+        `⏱️ ${days}d ${hours}h ${minutes}m together | Love Signals: ${ishanMissCount + varshaMissCount} 💖`;
     }
   }
 
-  // CORRECT DAY COUNT FUNCTION
-  function updateTimerLove() {
-    let nowDate = new Date();
-    let diff = nowDate - romanceStart;
-    let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((diff % (86400000)) / 3600000);
-    let minutes = Math.floor((diff % 3600000) / 60000);
-    
-    if (days < 0) {
-      document.getElementById("liveTimer").innerHTML = `💖 Counting since our special day... 💖`;
-    } else {
-      document.getElementById("liveTimer").innerHTML = `⏱️ ${days} days, ${hours} hours, ${minutes} minutes together · Total signals: ${ishanMissCount + varshaMissCount} 💖`;
-    }
-  }
-  setInterval(updateTimerLove, 1000);
+  setInterval(updateTimer, 1000);
 
   function setUserMode(mode) {
     currentUserMode = mode;
     const ishanBtn = document.getElementById("ishanModeBtn");
     const varshaBtn = document.getElementById("varshaModeBtn");
+    
     if (mode === "ishan") {
       ishanBtn.classList.add("ishan-active");
       varshaBtn.classList.remove("varsha-active");
-      varshaBtn.style.background = "rgba(30,15,45,0.6)";
-      ishanBtn.style.background = "linear-gradient(95deg, #2c3e66, #1a2a4f)";
-      showFlashMessage("💙 Ishan Mode Active — Your messages will count as 'Ishan missed Varsha' 💙");
+      showNotification("💙 Ishan's Heart is Active 💙");
     } else {
       varshaBtn.classList.add("varsha-active");
       ishanBtn.classList.remove("ishan-active");
-      ishanBtn.style.background = "rgba(30,15,45,0.6)";
-      varshaBtn.style.background = "linear-gradient(95deg, #b23c6a, #882c55)";
-      showFlashMessage("🌸 Varsha Mode Active — Your messages will count as 'Varsha missed Ishan' 🌸");
+      showNotification("🌸 Varsha's Heart is Active 🌸");
     }
   }
 
   function setMood(mood) {
     currentMood = mood;
     document.querySelectorAll(".mood-pill").forEach(pill => {
-      if (pill.getAttribute("data-mood") === mood) pill.classList.add("active");
-      else pill.classList.remove("active");
+      if (pill.getAttribute("data-mood") === mood) {
+        pill.classList.add("active");
+      } else {
+        pill.classList.remove("active");
+      }
     });
+    
     const moodInfo = moodData[mood];
     if (moodInfo) {
       document.getElementById("moodMessageDisplay").innerHTML = `✨ ${moodInfo.label} ✨`;
       const container = document.getElementById("dynamicButtons");
       container.innerHTML = "";
-      moodInfo.messages.forEach(msg => {
+      
+      moodInfo.messages.forEach((msg, idx) => {
         const btn = document.createElement("button");
         btn.className = "action-btn";
-        btn.innerHTML = msg.text.length > 32 ? msg.text.slice(0, 30) + ".." : msg.text;
-        btn.onclick = () => sendMoodBasedMessage(msg.text, msg.type);
+        btn.innerHTML = msg.text.length > 35 ? msg.text.slice(0, 32) + "..." : msg.text;
+        btn.onclick = () => sendMoodMessage(msg.text, msg.type);
         container.appendChild(btn);
       });
-      if (mood === "angry" && moodInfo.extraActions) {
-        moodInfo.extraActions.forEach(extra => {
-          const extraBtn = document.createElement("button");
-          extraBtn.className = "action-btn";
-          extraBtn.style.background = "linear-gradient(95deg, #ff884d, #ff5e7e)";
-          extraBtn.innerHTML = extra;
-          extraBtn.onclick = () => sendMoodBasedMessage(extra, "angry_extra");
-          container.appendChild(extraBtn);
-        });
-      }
     }
   }
 
-  function sendMoodBasedMessage(fullText, actionType) {
-    incrementCounterBasedOnMode();
+  async function sendMoodMessage(fullText, actionType) {
+    incrementCounter();
+    triggerCelebration();
+    await sendToCorrectUser(fullText, currentMood.toUpperCase());
     
-    // Visual effects based on mood
-    if (currentMood === "love") {
-      createFloatingNameWithCrackers("Ishan ❤️ Varsha");
-      burstCrackersEffect(22);
-      spawnFloatingEmojis(["💖","💋","🤗","💞","✨","🌹"], 14);
-    } else if (currentMood === "angry") {
-      spawnFloatingEmojis(["😤","💢","👋","💥","🏃","💧","💊","🍼"], 15);
-      burstCrackersEffect(18);
-      createFloatingNameWithCrackers("Angry but Cute 💕");
-    } else if (currentMood === "ask") {
-      createFloatingNameWithCrackers("💭 Pyaar se pucho 💭");
-      spawnFloatingEmojis(["❓","💌","🌙","😘"], 10);
-    } else if (currentMood === "secret") {
-      createFloatingNameWithCrackers("🤫 Sirf tumhare liye 🤫");
-      spawnFloatingEmojis(["🔐","💌","🌹","✨","💋"], 15);
-    }
-    
-    let senderDisplay = currentUserMode === "ishan" ? "Ishan 💙" : "Varsha 🌸";
-    sendToBothTelegrams(senderDisplay, fullText, currentMood.toUpperCase());
-    
-    let totalInteractions = ishanMissCount + varshaMissCount;
-    if (totalInteractions >= 10 && !proposalShownFlag) {
+    const totalSignals = ishanMissCount + varshaMissCount;
+    if (totalSignals >= 10 && !proposalShownFlag) {
       proposalShownFlag = true;
-      setTimeout(() => document.getElementById("proposalModal").classList.remove("hidden"), 700);
+      setTimeout(() => {
+        document.getElementById("proposalModal").classList.remove("hidden");
+      }, 1200);
     }
   }
 
-  function sendCustomWithMood() {
-    let customText = document.getElementById("customMessageInput").value.trim();
+  async function sendCustomMessage() {
+    const customText = document.getElementById("customMessageInput").value.trim();
     if (!customText) {
-      showFlashMessage("💬 Kuch likho mere liye...");
+      showNotification("💬 Type something sweet first! 💕");
       return;
     }
-    incrementCounterBasedOnMode();
-    createFloatingNameWithCrackers(`💌 ${customText.substring(0, 22)}`);
-    burstCrackersEffect(20);
-    spawnFloatingEmojis(["💖","📜","✨","💋","💌"], 14);
-    let senderDisplay = currentUserMode === "ishan" ? "Ishan 💙" : "Varsha 🌸";
-    sendToBothTelegrams(senderDisplay + " (Custom)", customText, currentMood.toUpperCase());
+    
+    incrementCounter();
+    triggerCelebration();
+    await sendToCorrectUser(customText, currentMood.toUpperCase());
     document.getElementById("customMessageInput").value = "";
   }
 
-  // Animation Functions
-  function createFloatingNameWithCrackers(nameText) {
-    for (let i = 0; i < 3; i++) {
-      let floatingDiv = document.createElement("div");
-      floatingDiv.className = "floating-name";
-      floatingDiv.innerText = nameText;
-      floatingDiv.style.left = (Math.random() * (window.innerWidth - 160) + 20) + "px";
-      floatingDiv.style.bottom = "20px";
-      floatingDiv.style.fontSize = (24 + Math.random() * 16) + "px";
-      document.body.appendChild(floatingDiv);
-      setTimeout(() => floatingDiv.remove(), 5000);
+  // ============================================================
+  // CELEBRATION ANIMATIONS
+  // ============================================================
+  function triggerCelebration() {
+    if (currentMood === "love") {
+      createFloatingName("Ishan ❤️ Varsha");
+      burstCrackers(25);
+      spawnEmojis(["💖", "💋", "🤗", "💞", "✨", "🌹"], 16);
+    } else if (currentMood === "cute") {
+      createFloatingName("Pookie Dokie 🥰");
+      burstCrackers(20);
+      spawnEmojis(["🥰", "💕", "🎀", "👶", "💕", "🌸"], 14);
+    } else if (currentMood === "angry") {
+      createFloatingName("Mad But Cute 💕");
+      burstCrackers(18);
+      spawnEmojis(["😤", "💢", "👋", "💥", "🏃", "💧", "💊"], 15);
+    } else if (currentMood === "ask") {
+      createFloatingName("Curious Hearts 💭");
+      burstCrackers(16);
+      spawnEmojis(["❓", "💌", "🌙", "😘", "💫"], 12);
+    } else if (currentMood === "secret") {
+      createFloatingName("Secret Garden 🤫");
+      burstCrackers(22);
+      spawnEmojis(["🔐", "💌", "🌹", "✨", "💋", "🌙"], 16);
     }
-    burstCrackersEffect(28);
   }
 
-  function burstCrackersEffect(count = 20) {
+  function createFloatingName(text) {
+    for (let i = 0; i < 2; i++) {
+      const div = document.createElement("div");
+      div.className = "floating-name";
+      div.innerText = text;
+      div.style.left = (Math.random() * (window.innerWidth - 200) + 100) + "px";
+      div.style.bottom = "20px";
+      div.style.fontSize = (28 + Math.random() * 20) + "px";
+      document.body.appendChild(div);
+      setTimeout(() => div.remove(), 5200);
+    }
+  }
+
+  function burstCrackers(count = 20) {
     for (let i = 0; i < count; i++) {
-      let crack = document.createElement("div");
+      const crack = document.createElement("div");
       crack.className = "cracker-burst";
       crack.style.left = Math.random() * window.innerWidth + "px";
-      crack.style.top = Math.random() * (window.innerHeight * 0.8) + "px";
-      crack.style.width = (6 + Math.random() * 10) + "px";
+      crack.style.top = Math.random() * (window.innerHeight * 0.7) + "px";
+      crack.style.width = (8 + Math.random() * 12) + "px";
       crack.style.height = crack.style.width;
+      
+      const angle = (Math.PI * 2 * i) / count;
+      const distance = 80 + Math.random() * 60;
+      crack.style.setProperty("--tx", Math.cos(angle) * distance + "px");
+      crack.style.setProperty("--ty", Math.sin(angle) * distance + "px");
+      
       document.body.appendChild(crack);
-      setTimeout(() => crack.remove(), 900);
+      setTimeout(() => crack.remove(), 1300);
     }
   }
 
-  function spawnFloatingEmojis(emojisArray, qty) {
+  function spawnEmojis(emojis, qty) {
     for (let i = 0; i < qty; i++) {
-      let em = document.createElement("div");
+      const em = document.createElement("div");
       em.className = "floating-emoji";
-      let randomEm = emojisArray[Math.floor(Math.random() * emojisArray.length)];
-      em.innerText = randomEm;
+      em.innerText = emojis[Math.floor(Math.random() * emojis.length)];
       em.style.left = Math.random() * window.innerWidth + "px";
       em.style.bottom = "10px";
-      let dx = (Math.random() - 0.5) * 140;
-      em.style.setProperty("--dx", dx + "px");
-      em.style.fontSize = (20 + Math.random() * 28) + "px";
+      em.style.setProperty("--dx", (Math.random() - 0.5) * 160 + "px");
+      em.style.fontSize = (22 + Math.random() * 32) + "px";
       document.body.appendChild(em);
-      setTimeout(() => em.remove(), 2000);
+      setTimeout(() => em.remove(), 2600);
     }
   }
 
-  function toggleMusic() {
-    if (bgMusic.paused) { bgMusic.play().catch(()=>{}); bgMusic.volume = 0.3; }
-    else bgMusic.pause();
-  }
-
-  function initMusicFade() {
-    bgMusic.volume = 0;
-    bgMusic.play().catch(e=>console.log);
-    let volInterval = setInterval(() => { if (bgMusic.volume < 0.32) bgMusic.volume += 0.02; else clearInterval(volInterval); }, 150);
-  }
-
-  function acceptProposal() {
-    alert("💍💖 YES! Forever begins, my universe! 💖💍");
-    document.getElementById("proposalModal").classList.add("hidden");
-    burstCrackersEffect(55);
-    createFloatingNameWithCrackers("💍 ETERNALLY YOURS 💍");
-    spawnFloatingEmojis(["💍","👰‍♀️","🤵","💒","✨"], 35);
-    sendToBothTelegrams(currentUserMode === "ishan" ? "Ishan" : "Varsha", "💍 PROPOSAL ACCEPTED — FOREVER AND ALWAYS 💍", "PROPOSAL");
-  }
-
-  // Event Listeners
-  const noRunBtn = document.getElementById("runawayNo");
-  if (noRunBtn) {
-    noRunBtn.addEventListener("mouseover", function() {
-      let rect = document.getElementById("proposalModal").getBoundingClientRect();
-      let newX = Math.random() * (rect.width - 100);
-      let newY = Math.random() * (rect.height - 70);
-      noRunBtn.style.position = "absolute";
-      noRunBtn.style.left = `${Math.max(5, newX)}px`;
-      noRunBtn.style.top = `${Math.max(5, newY)}px`;
-    });
-    noRunBtn.addEventListener("click", (e) => { e.stopPropagation(); alert("💖 You can't escape destiny.... I'll wait forever 💖"); });
-  }
-
-  document.addEventListener("dblclick", () => { document.getElementById("secretGardenModal").classList.remove("hidden"); });
-  window.closeSecretGarden = () => { document.getElementById("secretGardenModal").classList.add("hidden"); };
-
-  // Initialize Particles
-  particlesJS("particles-js", {
-    particles: { number: { value: 180 }, color: { value: ["#FFB7C5", "#ff88bb"] }, shape: { type: "circle" }, opacity: { value: 0.7 }, size: { value: 2 }, move: { enable: true, speed: 0.7 } },
-    interactivity: { events: { onhover: { enable: true, mode: "bubble" } }, modes: { bubble: { distance: 100, size: 4 } } }
+  // ============================================================
+  // MUSIC CONTROL
+  // ============================================================
+  musicBtn.addEventListener("click", () => {
+    if (bgMusic.paused) {
+      bgMusic.play().catch(() => {});
+      bgMusic.volume = 0.3;
+      musicBtn.classList.add("playing");
+      musicBtn.textContent = "🎵 MUSIC ON 🎵";
+    } else {
+      bgMusic.pause();
+      musicBtn.classList.remove("playing");
+      musicBtn.textContent = "🎵 MUSIC OFF 🎵";
+    }
   });
 
-  document.querySelectorAll(".mood-pill").forEach(pill => { pill.addEventListener("click", () => setMood(pill.getAttribute("data-mood"))); });
-  document.getElementById("sendMoodAction").addEventListener("click", sendCustomWithMood);
+  // ============================================================
+  // MODALS & INTERACTIONS
+  // ============================================================
+  function acceptProposal() {
+    alert("💍💖 YES! Forever starts NOW, my universe! 💖💍");
+    document.getElementById("proposalModal").classList.add("hidden");
+    burstCrackers(60);
+    createFloatingName("💍 ETERNALLY YOURS 💍");
+    spawnEmojis(["💍", "👰", "🤵", "💒", "✨", "💕"], 40);
+    sendToCorrectUser("💍 PROPOSAL ACCEPTED — FOREVER AND ALWAYS 💍", "PROPOSAL");
+  }
+
+  window.closeSecretGarden = () => {
+    document.getElementById("secretGardenModal").classList.add("hidden");
+  };
+
+  // Proposal button runaway interaction
+  const runawayBtn = document.getElementById("runawayNo");
+  if (runawayBtn) {
+    runawayBtn.addEventListener("mouseover", function() {
+      const rect = document.getElementById("proposalModal").getBoundingClientRect();
+      const newX = Math.random() * (rect.width - 100);
+      const newY = Math.random() * (rect.height - 50);
+      runawayBtn.style.position = "absolute";
+      runawayBtn.style.left = newX + "px";
+      runawayBtn.style.top = newY + "px";
+    });
+
+    runawayBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("💖 You can't escape destiny... I'll wait forever 💖");
+    });
+  }
+
+  // Secret garden double tap
+  document.addEventListener("dblclick", () => {
+    document.getElementById("secretGardenModal").classList.remove("hidden");
+  });
+
+  // ============================================================
+  // PARTICLES INITIALIZATION
+  // ============================================================
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 200 },
+      color: { value: ["#FFB7C5", "#ff88bb", "#ff3b6f"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.6 },
+      size: { value: 3 },
+      move: { enable: true, speed: 0.8 }
+    },
+    interactivity: {
+      events: {
+        onhover: { enable: true, mode: "bubble" }
+      },
+      modes: {
+        bubble: { distance: 120, size: 5 }
+      }
+    }
+  });
+
+  // ============================================================
+  // EVENT LISTENERS
+  // ============================================================
+  document.querySelectorAll(".mood-pill").forEach(pill => {
+    pill.addEventListener("click", () => setMood(pill.getAttribute("data-mood")));
+  });
+
+  document.getElementById("sendMoodAction").addEventListener("click", sendCustomMessage);
   document.getElementById("ishanModeBtn").addEventListener("click", () => setUserMode("ishan"));
   document.getElementById("varshaModeBtn").addEventListener("click", () => setUserMode("varsha"));
-  
-  // Initialize
+
+  // ============================================================
+  // INITIALIZATION
+  // ============================================================
   setMood("love");
   setUserMode("ishan");
   updateCountersUI();
-  updateTimerLove();
-  
-  window.addEventListener("load", () => { setTimeout(() => { bgMusic.play().catch(()=>{}); initMusicFade(); }, 500); });
-  
-  const styleFade = document.createElement('style');
-  styleFade.textContent = `@keyframes fadeMsg { 0%{ opacity:1; bottom:30%; } 100%{ opacity:0; bottom:45%; } }`;
-  document.head.appendChild(styleFade);
+  updateTimer();
+
+  // Auto-play music on load
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      bgMusic.play().catch(() => {});
+      bgMusic.volume = 0.25;
+    }, 800);
+  });
+
+  // Add heart beat animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      25% { transform: scale(1.1); }
+      50% { transform: scale(1); }
+      75% { transform: scale(1.1); }
+    }
+  `;
+  document.head.appendChild(style);
 </script>
 </body>
 </html>
- 
